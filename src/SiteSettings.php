@@ -87,6 +87,10 @@ class SiteSettings
                             'authorFallback' => $this->get_option('twitter_creator'),
                         ],
                     ],
+                    'homepage' => [
+                        'title' => $this->get_option('homepage_title'),
+                        'description' => $this->get_option('homepage_description'),
+                    ],
                 ];
             },
         ]);
@@ -99,6 +103,23 @@ class SiteSettings
      */
     protected function register_initial_types()
     {
+        $this->type_registry->register_object_type(
+            'SeoHomepage',
+            [
+                'description' => __('Homepage Integration Settings', 'autodescription'),
+                'fields' => [
+                    'homepageTitle' => [
+                        'type' => 'String',
+                        'description' => __('Homepage Title String', 'autodescription'),
+                    ],
+                    'homepageDescription' => [
+                        'type' => 'String',
+                        'description' => __('Homepage Description String', 'autodescription'),
+                    ]
+                ],
+            ]
+        );
+
         $this->type_registry->register_object_type(
             'SeoWebmaster',
             [
@@ -231,6 +252,10 @@ class SiteSettings
                     'type' => 'SeoWebmaster',
                     'description' => __('Webmaster Integration Settings', 'autodescription'),
                 ],
+                'homepage' => [
+                    'type' => 'SeoHomepage',
+                    'description' => __('Homepage Integration Settings', 'autodescription')
+                ]
             ],
         ]);
     }
