@@ -59,6 +59,7 @@ class SiteSettings
                 // Whether to output knowledge fields
                 $knowledge_output = $this->get_option('knowledge_output');
                 $knowledge_type = $this->get_option('knowledge_type');
+                $query = ['id' => $this->seo_framework->get_the_front_page_id()];
 
                 return [
                     'separator' => Utils::format_string($this->seo_framework->get_separator()),
@@ -88,8 +89,8 @@ class SiteSettings
                         ],
                     ],
                     'homepage' => [
-                        'title' => $this->get_option('homepage_title'),
-                        'description' => $this->get_option('homepage_description'),
+                        'title' => html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $this->seo_framework->get_title($query)), ENT_NOQUOTES, 'UTF-8'),
+                        'description' => $this->seo_framework->get_description($query),
                     ],
                 ];
             },
