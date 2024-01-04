@@ -89,8 +89,8 @@ class SiteSettings
                         ],
                     ],
                     'homepage' => [
-                        'title' => html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $this->seo_framework->get_title($query)), ENT_NOQUOTES, 'UTF-8'),
-                        'description' => $this->seo_framework->get_description($query),
+                        'homepageTitle' => html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $this->seo_framework->get_title($query)), ENT_NOQUOTES, 'UTF-8'),
+                        'homepageDescription' => $this->seo_framework->get_description($query),
                     ],
                 ];
             },
