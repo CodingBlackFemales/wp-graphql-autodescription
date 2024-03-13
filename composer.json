@@ -1,5 +1,5 @@
 {
-  "name": "anacoelhovicente/wp-graphql-autodescription",
+  "name": "nogueiram-27/wp-graphql-autodescription",
   "description": "Adds support for The Seo Framework to the WPGraphQL Schema",
   "type": "wordpress-plugin",
   "license": "GPL-3.0-or-later",
@@ -7,6 +7,10 @@
     {
       "name": "Ana Vicente",
       "email": "contact@anavicente.me"
+    },
+    {
+      "name": "Maria Nogueira",
+      "email": "mariapintonogueira@gmail.com"
     }
   ],
   "config": {

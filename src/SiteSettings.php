@@ -59,6 +59,7 @@ class SiteSettings
                 // Whether to output knowledge fields
                 $knowledge_output = $this->get_option('knowledge_output');
                 $knowledge_type = $this->get_option('knowledge_type');
+                $query = ['id' => $this->seo_framework->get_the_front_page_id()];
 
                 return [
                     'separator' => Utils::format_string($this->seo_framework->get_separator()),
@@ -87,6 +88,10 @@ class SiteSettings
                             'authorFallback' => $this->get_option('twitter_creator'),
                         ],
                     ],
+                    'homepage' => [
+                        'homepageTitle' => html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $this->seo_framework->get_title($query)), ENT_NOQUOTES, 'UTF-8'),
+                        'homepageDescription' => $this->seo_framework->get_description($query),
+                    ],
                 ];
             },
         ]);
@@ -99,6 +104,23 @@ class SiteSettings
      */
     protected function register_initial_types()
     {
+        $this->type_registry->register_object_type(
+            'SeoHomepage',
+            [
+                'description' => __('Homepage Integration Settings', 'autodescription'),
+                'fields' => [
+                    'homepageTitle' => [
+                        'type' => 'String',
+                        'description' => __('Homepage Title String', 'autodescription'),
+                    ],
+                    'homepageDescription' => [
+                        'type' => 'String',
+                        'description' => __('Homepage Description String', 'autodescription'),
+                    ]
+                ],
+            ]
+        );
+
         $this->type_registry->register_object_type(
             'SeoWebmaster',
             [
@@ -231,6 +253,10 @@ class SiteSettings
                     'type' => 'SeoWebmaster',
                     'description' => __('Webmaster Integration Settings', 'autodescription'),
                 ],
+                'homepage' => [
+                    'type' => 'SeoHomepage',
+                    'description' => __('Homepage Integration Settings', 'autodescription')
+                ]
             ],
         ]);
     }
