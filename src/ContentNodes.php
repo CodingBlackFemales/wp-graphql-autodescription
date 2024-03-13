@@ -177,6 +177,13 @@ class ContentNodes
                             'autodescription'
                         ),
                     ],
+                    'cardType' => [
+                        'type' => 'String',
+                        'description' => __(
+                            'Twitter Card Type',
+                            'autodescription'
+                        ),
+                    ],
                 ],
             ]
         );
@@ -292,6 +299,7 @@ class ContentNodes
             'twitter' => isset($fields['twitter']) ? [
                 'title' => Utils::format_string($seo_framework->get_twitter_title($query)),
                 'description' => Utils::format_string($seo_framework->get_twitter_description($query)),
+                'cardType' => Utils::format_string(\tsf()->twitter()->get_card_type()),
             ] : null,
         ];
 

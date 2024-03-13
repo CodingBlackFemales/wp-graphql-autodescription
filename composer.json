@@ -1,5 +1,5 @@
 {
-  "name": "nogueiram-27/wp-graphql-autodescription",
+  "name": "codingblackfemales/wp-graphql-autodescription",
   "description": "Adds support for The Seo Framework to the WPGraphQL Schema",
   "type": "wordpress-plugin",
   "license": "GPL-3.0-or-later",
@@ -11,6 +11,10 @@
     {
       "name": "Maria Nogueira",
       "email": "mariapintonogueira@gmail.com"
+    },
+    {
+      "name": "Gary McPherson",
+      "email": "gary@codingblackfemales.com"
     }
   ],
   "config": {
